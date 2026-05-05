@@ -36,6 +36,19 @@
   .os-num { font-size: 11px; letter-spacing: 0.12em; color: #999; margin-bottom: 0.5rem; }
   .os-title { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.4rem; }
   .os-body { font-size: 13px; color: #666; line-height: 1.55; }
+  .exchange { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2.5rem 0; align-items: start; }
+  .exchange-in { background: #2a2f28; border-radius: 16px; padding: 1.75rem; }
+  .exchange-in .ex-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6a6f68; margin-bottom: 1rem; }
+  .exchange-in .ex-time { font-size: 11px; color: #6a6f68; margin-bottom: 0.75rem; }
+  .exchange-in p { font-size: 14px; color: #c8c0b0; line-height: 1.7; font-style: italic; }
+  .exchange-out { background: #fff; border: 0.5px solid #e0ddd8; border-radius: 16px; padding: 1.75rem; }
+  .exchange-out .ex-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #999; margin-bottom: 1rem; }
+  .playlist-item { border-top: 0.5px solid #f0ede8; padding: 1rem 0; }
+  .playlist-item:first-of-type { border-top: none; padding-top: 0; }
+  .playlist-item .pi-step { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 0.3rem; }
+  .playlist-item .pi-title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.25rem; }
+  .playlist-item .pi-body { font-size: 12px; color: #666; line-height: 1.55; margin-bottom: 0.3rem; }
+  .playlist-item .pi-link { font-size: 11px; color: #4a90d9; text-decoration: none; }
   .provenance { background: #f7f5f0; border: 0.5px solid #e0ddd8; border-radius: 16px; padding: 2rem 2.5rem; margin: 2rem 0; }
   .provenance p { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 0.75rem; }
   .provenance p:last-child { margin-bottom: 0; }
@@ -55,6 +68,7 @@
     .hero-box h1 { font-size: 56px; }
     .three-col { grid-template-columns: 1fr; }
     .one-shot { grid-template-columns: 1fr; }
+    .exchange { grid-template-columns: 1fr; }
     .cta-options { grid-template-columns: 1fr; }
   }
 </style>
@@ -69,8 +83,10 @@
 
   <div class="prose-block">
     <span class="overline">What Support Playlists are</span>
-    <p>Every day, millions of people leave a clinical encounter with the same unanswered question. The appointment is over. The clinician has done their job. And then what?</p>
-    <p>Support Playlists answer that question. Someone says what is going on — in their own words, however it comes out — and receives a small, curated, sequenced set of support. Not a directory. Not a leaflet. A playlist. Built for where they are right now.</p>
+    <p>Most people who need help never make it to a clinical encounter. They search. They spiral. They sit with something they cannot name. They are the demand that never becomes demand — the person who needed the system before they knew the system existed.</p>
+    <p>Support Playlists are for them.</p>
+    <p>Say what is going on. However it comes out. Swear. Shout. Ramble. Type something half-formed at midnight. Speak into your phone on the bus. The intelligence layer does not need clean input. It needs honest input.</p>
+    <p>In return: a calm, bespoke playlist. Sequenced for exactly where you are right now. One shot — or do it over.</p>
     <div class="pull">A library says: everything is here, go find it. A playlist says: I heard you. Here is what you need, in this order, starting now.</div>
     <p>The intelligence layer is Emotional Architecture — a design discipline that reads not just what someone needs, but how much they can take in, how heavy it feels, what needs to come first.</p>
   </div>
@@ -79,7 +95,8 @@
 
   <div class="prose-block">
     <span class="overline">Platform agnostic — by design</span>
-    <p>Support Playlists do not belong to any system. They are a pattern, a protocol, a layer of intelligence that can sit inside any platform that captures human need.</p>
+    <p>Support Playlists live anywhere human need is expressed. A GP consultation. A hospital discharge. A community app. A QR code on a wall. They do not belong to any system. They are the layer underneath all of them.</p>
+    <p>Primary care has a home. Secondary care has a home. The public — the person searching before they become a patient, the person who never will — until now, had nothing.</p>
   </div>
 
   <div class="three-col">
@@ -100,15 +117,58 @@
     </div>
   </div>
 
+  <hr class="divider">
+
   <div class="prose-block">
-    <p>Primary care has a home. Secondary care has a home. The public — the person who has not yet reached a clinician, or who never will — has nothing. Until now.</p>
+    <span class="overline">What it actually looks like</span>
+    <p>This is the LLM doing what it does best. Messy, honest, human input — transformed into something calm, sequenced and useful. One shot.</p>
+  </div>
+
+  <div class="exchange">
+    <div class="exchange-in">
+      <div class="ex-label">Input</div>
+      <div class="ex-time">11.47pm</div>
+      <p>"cant stop crying and i dont even know why. lost my job three weeks ago havent told anyone. behind on rent. mum keeps calling and i just let it ring. feel like im just waiting for something bad to happen. dont know where to start"</p>
+    </div>
+    <div class="exchange-out">
+      <div class="ex-label">Help. heard you.</div>
+      <div class="playlist-item">
+        <div class="pi-step">Start here, tonight</div>
+        <div class="pi-title">You do not have to do anything else right now</div>
+        <div class="pi-body">Mind has a guided breathing exercise that takes four minutes. No account. No app. Just open it.</div>
+        <a class="pi-link" href="https://www.mind.org.uk/need-urgent-help">mind.org.uk/need-urgent-help</a>
+      </div>
+      <div class="playlist-item">
+        <div class="pi-step">Tomorrow morning</div>
+        <div class="pi-title">Money first</div>
+        <div class="pi-body">Citizens Advice can tell you exactly where you stand — on rent, on benefits, on what you are entitled to. Free. Confidential.</div>
+        <a class="pi-link" href="https://www.citizensadvice.org.uk">citizensadvice.org.uk</a>
+      </div>
+      <div class="playlist-item">
+        <div class="pi-step">This week</div>
+        <div class="pi-title">You do not have to say much</div>
+        <div class="pi-body">Weymouth Library runs a weekly drop-in on Thursdays. Quiet. People there. You do not have to explain yourself.</div>
+        <a class="pi-link" href="https://www.dorset.gov.uk/libraries">dorset.gov.uk/libraries</a>
+      </div>
+      <div class="playlist-item">
+        <div class="pi-step">When you are ready</div>
+        <div class="pi-title">The job</div>
+        <div class="pi-body">There is a work coach service that is actually useful. Self-refer and set the pace.</div>
+        <a class="pi-link" href="https://www.jobcentreplus.gov.uk">jobcentreplus.gov.uk</a>
+      </div>
+      <div class="playlist-item">
+        <div class="pi-step">If the crying does not stop</div>
+        <div class="pi-title">Your GP can help with this</div>
+        <div class="pi-body">"I have not been okay for a few weeks" is enough. Same-day appointments available at Weymouth and Portland practices.</div>
+      </div>
+    </div>
   </div>
 
   <hr class="divider">
 
   <div class="prose-block">
     <span class="overline">Help.</span>
-    <p>A Help. disc. Small, round, warm cream. A QR code. Stuck to a pub toilet door by someone who thought it might help someone.</p>
+    <p>A disc. Round. Warm cream. A QR code. Stuck to a pub toilet door by someone who thought it might help someone.</p>
   </div>
 
   <div class="img-frame">
@@ -117,7 +177,7 @@
   <p class="img-caption">It has always been there. You just noticed it today.</p>
 
   <div class="prose-block" style="margin-top:2rem;">
-    <p>No campaign launched it. No NHS trust commissioned it. Someone picked one up, put it somewhere they thought it was needed, and moved on. That is the distribution model. That is the cultural logic.</p>
+    <p>No campaign launched it. No trust commissioned it. Someone picked one up, put it somewhere they thought it was needed, and moved on. That is the distribution model. That is the cultural logic.</p>
   </div>
 
   <div class="clarke-box">
@@ -126,7 +186,10 @@
   </div>
 
   <div class="prose-block">
-    <p>Help. is not advanced technology pretending to be simple. It is profound philosophical thinking that arrives at something so elegant it feels like magic. A thousand engineers could not have designed it. It took an applied philosopher, inside the NHS, watching what actually happens to people in the worst moments of their lives.</p>
+    <p>Help. inverts this. The technology is not complicated. The thinking behind it is. Profound, patient, philosophical thinking — about what people actually need in the worst moments of their lives — arriving at something so simple it feels like magic.</p>
+    <p>Say what is going on. Get a playlist. That is it.</p>
+    <p>No login. No account. No data stored. No conversation. No chatbot. No form. One shot — or do it over.</p>
+    <p>The one-shot constraint is not a technical limitation. It is a philosophical position. You do not interrogate someone in crisis. You receive what they give you, and you give something back.</p>
   </div>
 
   <div class="one-shot">
@@ -143,13 +206,8 @@
     <div class="os-step">
       <div class="os-num">03</div>
       <div class="os-title">Get a playlist</div>
-      <div class="os-body">Curated, sequenced, human. Starting with the most accessible step. One shot. Done.</div>
+      <div class="os-body">Curated, sequenced, human. Starting with the most accessible step. One shot — or do it over.</div>
     </div>
-  </div>
-
-  <div class="prose-block">
-    <p>One shot. That constraint is not a technical limitation. It is a philosophical position. You do not interrogate someone in crisis. You receive what they give you, and you give something back.</p>
-    <p>No login. No account. No data stored. No back and forth. No chatbot. Just: say what is going on, get a playlist.</p>
   </div>
 
   <hr class="divider">
@@ -159,16 +217,16 @@
   </div>
 
   <div class="provenance">
-    <p>Mark Winterburn is Digital and Transformation Lead at Weymouth and Portland PCN — 74,000 patients, five GP practices, the Dorset coast. He is also an applied philosopher, a former prison officer at HMP Portland, a yoga teacher who trained in Mysore, a Playout Director who navigated the analogue to digital transition at the BBC.</p>
-    <p>He joined the NHS in 2024 and built Emotional Architecture as a design discipline from the inside — watching what happens in the car park after a GP appointment, on the ward at discharge, at two in the morning when someone picks up their phone and does not know who to call.</p>
-    <p>Help. is the product of that provenance. It could not have been designed from outside the system. It could not have been designed without the philosophy. The simplicity is the result of the depth, not the absence of it.</p>
+    <p>Mark Winterburn is Digital and Transformation Lead at Weymouth and Portland PCN — 74,000 patients, five GP practices, the Dorset coast. He is an applied philosopher, a former prison officer, a yoga teacher who trained in Mysore, a broadcast television director who navigated the analogue to digital transition at the BBC.</p>
+    <p>He joined the NHS in 2024. He built Emotional Architecture as a design discipline from the inside — standing in car parks after GP appointments, watching what happens on wards at discharge, thinking about what it feels like to pick up a phone at two in the morning and not know who to call.</p>
+    <p>Help. is the simplest idea he has ever had. The simplicity is the result of the depth. Someone arriving at this from the outside would have built a chatbot, a portal, a directory with a better filter. It took a philosopher inside the system to arrive at something this quiet.</p>
   </div>
 
   <hr class="divider">
 
   <div class="cta-block">
     <h2>Before we meet — who should be in the room?</h2>
-    <p>Matilda, you know Beam better than anyone. Help. could sit alongside Magic Notes as a flagship public-facing product — the practitioner tool and the citizen tool, together. Who from your side do you think should be part of this conversation?</p>
+    <p>Matilda, you know Beam better than anyone. Magic Notes serves the practitioner. Help. serves the person. Together they cover the full picture — the worker and the human being they are trying to reach. Who from your side should be part of this conversation?</p>
     <div class="cta-options">
       <a class="cta-opt" href="mailto:mark.winterburn@dorsetgp.nhs.uk?subject=Help. meeting — bringing Product&body=Mark, I think the product team should be in this conversation.">
         <div class="cta-role">Product</div>
