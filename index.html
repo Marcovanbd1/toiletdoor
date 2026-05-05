@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help. — for Matilda at Beam</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f5f0; color: #1a1a1a; }
+  .s-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+  .hero-box { background: #2a2f28; border-radius: 16px; padding: 4rem 3.5rem 3.5rem; margin-bottom: 3.5rem; }
+  .hero-box h1 { font-size: 80px; font-weight: 500; color: #f0ece2; line-height: 1; letter-spacing: -3px; margin-bottom: 1rem; }
+  .hero-box p { font-size: 17px; color: #a8a49a; line-height: 1.65; max-width: 400px; }
+  .overline { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin-bottom: 0.75rem; display: block; }
+  .prose-block { margin-bottom: 2.5rem; }
+  .prose-block p { font-size: 16px; color: #444; line-height: 1.8; margin-bottom: 1rem; }
+  .pull { font-family: Georgia, serif; font-size: 24px; line-height: 1.5; color: #1a1a1a; font-weight: 400; border-left: 2px solid #ccc; padding-left: 1.5rem; margin: 2rem 0; }
+  .divider { border: none; border-top: 0.5px solid #ddd; margin: 3rem 0; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
+  .home-card { background: #fff; border: 0.5px solid #e0ddd8; border-radius: 12px; padding: 1.25rem; }
+  .home-card .hc-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #999; margin-bottom: 0.5rem; }
+  .home-card .hc-title { font-size: 15px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.4rem; }
+  .home-card .hc-desc { font-size: 13px; color: #666; line-height: 1.55; }
+  .home-card.active { border: 1.5px solid #4a90d9; background: #f0f6fd; }
+  .home-card.active .hc-label { color: #2c6fad; }
+  .home-card.active .hc-title { color: #1a4a7a; }
+  .home-card.active .hc-desc { color: #2c6fad; }
+  .img-frame { border-radius: 16px; overflow: hidden; margin: 2.5rem 0; }
+  .img-frame img { width: 100%; display: block; }
+  .img-caption { font-size: 13px; color: #999; margin-top: 0.75rem; font-style: italic; }
+  .clarke-box { background: #f0ece2; border-radius: 16px; padding: 2.5rem 3rem; margin: 2.5rem 0; }
+  .clarke-box .quote { font-family: Georgia, serif; font-size: 22px; color: #1a1a1a; line-height: 1.5; margin-bottom: 0.75rem; }
+  .clarke-box .attr { font-size: 13px; color: #888; }
+  .one-shot { border: 0.5px solid #e0ddd8; border-radius: 16px; overflow: hidden; margin: 2rem 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5px; background: #e0ddd8; }
+  .os-step { background: #fff; padding: 1.5rem 1.25rem; }
+  .os-num { font-size: 11px; letter-spacing: 0.12em; color: #999; margin-bottom: 0.5rem; }
+  .os-title { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.4rem; }
+  .os-body { font-size: 13px; color: #666; line-height: 1.55; }
+  .provenance { background: #f7f5f0; border: 0.5px solid #e0ddd8; border-radius: 16px; padding: 2rem 2.5rem; margin: 2rem 0; }
+  .provenance p { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 0.75rem; }
+  .provenance p:last-child { margin-bottom: 0; }
+  .cta-block { border-top: 0.5px solid #ddd; padding-top: 3rem; margin-top: 3rem; }
+  .cta-block h2 { font-size: 24px; font-weight: 500; color: #1a1a1a; margin-bottom: 1rem; }
+  .cta-block p { font-size: 15px; color: #555; line-height: 1.75; margin-bottom: 2rem; }
+  .cta-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cta-opt { background: #fff; border: 0.5px solid #ccc; border-radius: 12px; padding: 1.25rem 1.5rem; cursor: pointer; text-decoration: none; display: block; transition: background 0.15s, border-color 0.15s; }
+  .cta-opt:hover { background: #f0ece2; border-color: #aaa; }
+  .cta-opt .cta-role { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.3rem; }
+  .cta-opt .cta-why { font-size: 13px; color: #888; line-height: 1.5; }
+  .cta-reply { margin-top: 2rem; }
+  .cta-reply label { display: block; font-size: 13px; color: #888; margin-bottom: 0.5rem; }
+  .cta-reply textarea { width: 100%; border: 0.5px solid #ccc; border-radius: 10px; padding: 0.75rem 1rem; font-size: 14px; font-family: inherit; color: #1a1a1a; background: #fff; resize: vertical; min-height: 80px; }
+  .cta-reply textarea:focus { outline: none; border-color: #888; }
+  .send-btn { margin-top: 0.75rem; background: #2a2f28; color: #f0ece2; border: none; border-radius: 8px; padding: 0.6rem 1.5rem; font-size: 14px; font-family: inherit; cursor: pointer; }
+  .send-btn:hover { background: #1a1f18; }
+  .sig { margin-top: 3.5rem; padding-top: 2rem; border-top: 0.5px solid #ddd; }
+  .sig p { font-size: 14px; color: #888; line-height: 1.75; }
+  .sig strong { color: #555; font-weight: 500; }
+  @media (max-width: 600px) {
+    .hero-box { padding: 2.5rem 2rem; }
+    .hero-box h1 { font-size: 56px; }
+    .three-col { grid-template-columns: 1fr; }
+    .one-shot { grid-template-columns: 1fr; }
+    .cta-options { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="s-wrap">
+
+  <div class="hero-box">
+    <h1>Help.</h1>
+    <p>A conversation for Matilda Crowfoot at Beam — before we meet.</p>
+  </div>
+
+  <div class="prose-block">
+    <span class="overline">What Support Playlists are</span>
+    <p>Every day, millions of people leave a clinical encounter with the same unanswered question. The appointment is over. The clinician has done their job. And then what?</p>
+    <p>Support Playlists answer that question. Someone says what is going on — in their own words, however it comes out — and receives a small, curated, sequenced set of support. Not a directory. Not a leaflet. A playlist. Built for where they are right now.</p>
+    <div class="pull">A library says: everything is here, go find it. A playlist says: I heard you. Here is what you need, in this order, starting now.</div>
+    <p>The intelligence layer is Emotional Architecture — a design discipline that reads not just what someone needs, but how much they can take in, how heavy it feels, what needs to come first.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="prose-block">
+    <span class="overline">Platform agnostic — by design</span>
+    <p>Support Playlists do not belong to any system. They are a pattern, a protocol, a layer of intelligence that can sit inside any platform that captures human need.</p>
+  </div>
+
+  <div class="three-col">
+    <div class="home-card">
+      <div class="hc-label">Primary care</div>
+      <div class="hc-title">Lexacom</div>
+      <div class="hc-desc">At the end of every GP consultation. The clinical record and the human record, together.</div>
+    </div>
+    <div class="home-card">
+      <div class="hc-label">Secondary care</div>
+      <div class="hc-title">Hospital discharge</div>
+      <div class="hc-desc">The moment of highest need. The ward is loud. Nobody is coming. The playlist is already there.</div>
+    </div>
+    <div class="home-card active">
+      <div class="hc-label">Public facing</div>
+      <div class="hc-title">Help.</div>
+      <div class="hc-desc">No clinician required. No appointment. No account. Just: say what is going on, get a playlist.</div>
+    </div>
+  </div>
+
+  <div class="prose-block">
+    <p>Primary care has a home. Secondary care has a home. The public — the person who has not yet reached a clinician, or who never will — has nothing. Until now.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="prose-block">
+    <span class="overline">Help.</span>
+    <p>A Help. disc. Small, round, warm cream. A QR code. Stuck to a pub toilet door by someone who thought it might help someone.</p>
+  </div>
+
+  <div class="img-frame">
+    <img src="https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/main/help-door.jpg" alt="Help. disc on a pub toilet door">
+  </div>
+  <p class="img-caption">It has always been there. You just noticed it today.</p>
+
+  <div class="prose-block" style="margin-top:2rem;">
+    <p>No campaign launched it. No NHS trust commissioned it. Someone picked one up, put it somewhere they thought it was needed, and moved on. That is the distribution model. That is the cultural logic.</p>
+  </div>
+
+  <div class="clarke-box">
+    <div class="quote">"Any sufficiently advanced technology is indistinguishable from magic."</div>
+    <div class="attr">Arthur C. Clarke — Third Law</div>
+  </div>
+
+  <div class="prose-block">
+    <p>Help. is not advanced technology pretending to be simple. It is profound philosophical thinking that arrives at something so elegant it feels like magic. A thousand engineers could not have designed it. It took an applied philosopher, inside the NHS, watching what actually happens to people in the worst moments of their lives.</p>
+  </div>
+
+  <div class="one-shot">
+    <div class="os-step">
+      <div class="os-num">01</div>
+      <div class="os-title">Say what is going on</div>
+      <div class="os-body">Any words. Any language. Any device. No form. No structure required.</div>
+    </div>
+    <div class="os-step">
+      <div class="os-num">02</div>
+      <div class="os-title">Emotional Architecture reads the moment</div>
+      <div class="os-body">Not just what is needed — where the person is right now. How much they can receive.</div>
+    </div>
+    <div class="os-step">
+      <div class="os-num">03</div>
+      <div class="os-title">Get a playlist</div>
+      <div class="os-body">Curated, sequenced, human. Starting with the most accessible step. One shot. Done.</div>
+    </div>
+  </div>
+
+  <div class="prose-block">
+    <p>One shot. That constraint is not a technical limitation. It is a philosophical position. You do not interrogate someone in crisis. You receive what they give you, and you give something back.</p>
+    <p>No login. No account. No data stored. No back and forth. No chatbot. Just: say what is going on, get a playlist.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="prose-block">
+    <span class="overline">Why this could only come from here</span>
+  </div>
+
+  <div class="provenance">
+    <p>Mark Winterburn is Digital and Transformation Lead at Weymouth and Portland PCN — 74,000 patients, five GP practices, the Dorset coast. He is also an applied philosopher, a former prison officer at HMP Portland, a yoga teacher who trained in Mysore, a Playout Director who navigated the analogue to digital transition at the BBC.</p>
+    <p>He joined the NHS in 2024 and built Emotional Architecture as a design discipline from the inside — watching what happens in the car park after a GP appointment, on the ward at discharge, at two in the morning when someone picks up their phone and does not know who to call.</p>
+    <p>Help. is the product of that provenance. It could not have been designed from outside the system. It could not have been designed without the philosophy. The simplicity is the result of the depth, not the absence of it.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="cta-block">
+    <h2>Before we meet — who should be in the room?</h2>
+    <p>Matilda, you know Beam better than anyone. Help. could sit alongside Magic Notes as a flagship public-facing product — the practitioner tool and the citizen tool, together. Who from your side do you think should be part of this conversation?</p>
+    <div class="cta-options">
+      <a class="cta-opt" href="mailto:mark.winterburn@dorsetgp.nhs.uk?subject=Help. meeting — bringing Product&body=Mark, I think the product team should be in this conversation.">
+        <div class="cta-role">Product</div>
+        <div class="cta-why">This changes what Beam builds next</div>
+      </a>
+      <a class="cta-opt" href="mailto:mark.winterburn@dorsetgp.nhs.uk?subject=Help. meeting — bringing Ethical AI lead&body=Mark, I think our ethical AI lead should be in this conversation.">
+        <div class="cta-role">Ethical AI lead</div>
+        <div class="cta-why">Emotional Architecture needs the right governance conversation</div>
+      </a>
+      <a class="cta-opt" href="mailto:mark.winterburn@dorsetgp.nhs.uk?subject=Help. meeting — bringing Commercial&body=Mark, I think the commercial team should be in this conversation.">
+        <div class="cta-role">Commercial</div>
+        <div class="cta-why">The flagship model question is a strategic one</div>
+      </a>
+      <a class="cta-opt" href="mailto:mark.winterburn@dorsetgp.nhs.uk?subject=Help. meeting — just us first&body=Mark, let's start with just the two of us.">
+        <div class="cta-role">Just us first</div>
+        <div class="cta-why">Let the conversation find its own shape</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="sig">
+    <p><strong>Mark Winterburn</strong><br>
+    Digital and Transformation Lead, Weymouth and Portland PCN<br>
+    Co-Director, Neighbourhood CoLab CIC<br>
+    mark.winterburn@dorsetgp.nhs.uk</p>
+  </div>
+
+</div>
+</body>
+</html>
